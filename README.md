@@ -8,7 +8,7 @@ Copy the entire project folder to the following path:
 
 
 
-C:\\praktinis assignment\\...
+C:\\praktinis assignment\\
 
 
 
@@ -23,6 +23,8 @@ Python Requirement
 
 
 Ensure that your computer has Python 3.13.7 installed.
+
+
 
 The solution may also work on slightly older or newer Python versions, but 3.13.7 is recommended for compatibility.
 
@@ -50,7 +52,7 @@ Password: rpauzduotis
 
 
 
-Additional Microsoft Account password (if prompted): rpauzduotis1
+Additional Microsoft account password (if prompted): rpauzduotis1
 
 
 
@@ -69,6 +71,8 @@ Power Automate
 
 
 This folder contains all flow definitions in text form.
+
+
 
 If login is unsuccessful, manually recreate the flows:
 
@@ -94,8 +98,6 @@ Once the project folder is placed correctly and the Power Automate account is lo
 
 Main → clean\_folders
 
-
-
 Subflow: clean\_folders
 
 
@@ -114,8 +116,6 @@ C:\\praktinis assignment\\report
 
 Main → read\_data
 
-
-
 Subflow: read\_data
 
 
@@ -124,11 +124,11 @@ Supports processing multiple data files.
 
 
 
-Reads each file and assigns required values into a table.
+Reads each file and assigns required values into a data table.
 
 
 
-After completing data extraction, the next process is triggered:
+After processing, the sequence continues:
 
 
 
@@ -148,11 +148,11 @@ The system attempts to register a new client.
 
 
 
-If the client already exists, the system logs into the existing account.
+If the account already exists, the system logs in.
 
 
 
-Once logged in, the next step is:
+After login, the next step is:
 
 
 
@@ -162,7 +162,7 @@ register\_to\_parabank → loan\_submit
 
 
 
-If new accounts were not registered in this iteration, the flow proceeds as:
+If no accounts were registered in this iteration:
 
 
 
@@ -182,5 +182,5 @@ Submits a loan request.
 
 
 
-Moves on to the next client automatically.
+Moves to the next client.
 
