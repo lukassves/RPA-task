@@ -1,0 +1,28 @@
+Folder.GetFiles Folder: $fx'C:\\praktinis assignment\\data' FileFilter: $fx'*.csv' IncludeSubfolders: False FailOnAccessDenied: True SortBy1: Folder.SortBy.NoSort SortDescending1: False SortBy2: Folder.SortBy.NoSort SortDescending2: False SortBy3: Folder.SortBy.NoSort SortDescending3: False Files=> DataFileNames
+LOOP FOREACH CurrentFile IN $fx'=DataFileNames'
+    Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $fx'=CurrentFile' Visible: False ReadOnly: False UseMachineLocale: False Instance=> ExcelInstance
+    Excel.ReadFromExcel.ReadAllCells Instance: $fx'=ExcelInstance' GetCellContentsMode: Excel.GetCellContentsMode.TypedValues FirstLineIsHeader: False RangeValue=> ExcelData
+    Variables.CreateNewDatatable InputTable: { ^['First Name', 'Last Name', 'Address', 'City', 'State', 'Zip Code', 'Phone Number', 'SSN', 'Username', 'Password', 'Account Type', 'Initial Deposit', 'DOB', 'Debit Card', 'CVV'], [$fx'', $fx'', $fx'', $fx'', $fx'', $fx'', $fx'', $fx'', $fx'', $fx'', $fx'', $fx'', $fx'', $fx'', $fx''] } DataTable=> DataTable
+    Variables.CreateNewList List=> List
+    LOOP FOREACH CurrentLine IN $fx'=ExcelData'
+        Variables.ClearList List: $fx'=List'
+        Variables.AddItemToList Item: $fx'=Index(CurrentLine, 1)' List: $fx'=List'
+        Variables.AddItemToList Item: $fx'=Index(CurrentLine, 2)' List: $fx'=List'
+        Variables.AddItemToList Item: $fx'=Index(CurrentLine, 3)' List: $fx'=List'
+        Variables.AddItemToList Item: $fx'=Index(CurrentLine, 4)' List: $fx'=List'
+        Variables.AddItemToList Item: $fx'=Index(CurrentLine, 5)' List: $fx'=List'
+        Variables.AddItemToList Item: $fx'=Index(CurrentLine, 6)' List: $fx'=List'
+        Variables.AddItemToList Item: $fx'=Index(CurrentLine, 7)' List: $fx'=List'
+        Variables.AddItemToList Item: $fx'=Index(CurrentLine, 8)' List: $fx'=List'
+        Variables.AddItemToList Item: $fx'=Index(CurrentLine, 9)' List: $fx'=List'
+        Variables.AddItemToList Item: $fx'=Index(CurrentLine, 10)' List: $fx'=List'
+        Variables.AddItemToList Item: $fx'=Index(CurrentLine, 11)' List: $fx'=List'
+        Variables.AddItemToList Item: $fx'=Index(CurrentLine, 12)' List: $fx'=List'
+        Variables.AddItemToList Item: $fx'=Index(CurrentLine, 26)' List: $fx'=List'
+        Variables.AddItemToList Item: $fx'=Index(CurrentLine, 27)' List: $fx'=List'
+        Variables.AddItemToList Item: $fx'=Index(CurrentLine, 28)' List: $fx'=List'
+        Variables.AddRowToDataTable.AppendRowToDataTable DataTable: $fx'=DataTable' RowToAdd: $fx'=List'
+    END
+    Excel.CloseExcel.Close Instance: $fx'=ExcelInstance'
+    CALL register_to_parabank
+END
