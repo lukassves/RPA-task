@@ -23,8 +23,8 @@ Organization or school accounts allow exporting only with a Premium license.
 To run the flows included in this task, log in to Power Automate using the following credentials:
 Email: anonim46547@gmail.com
 Password: rpauzduotis
-Additional Microsoft account password (if prompted): 
-rpauzduotis1
+{Additional Microsoft account password (if prompted): 
+rpauzduotis1}
 
 
 If Power Automate Desktop Login Fails
